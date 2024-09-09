@@ -25,15 +25,15 @@ class GFG {
 class Solution {
     int isPalindrome(String S) {
         // Create a StringBuilder to construct the reversed string
-        StringBuilder str = new StringBuilder();
-        int n = S.length();
-
-        for(int i = n - 1; i >= 0; i--){
-            str.append(S.charAt(i));
-        }
-        if(S.equals(str.toString())) {
-            return 1;
-        }
-        return 0;
+       int left =0;
+       int right = S.length()-1;
+       while(left<right){
+           if(S.charAt(left)!=S.charAt(right)){
+               return 0;
+           }
+           left++;
+           right--;
+       }
+       return 1;
     }
 }
