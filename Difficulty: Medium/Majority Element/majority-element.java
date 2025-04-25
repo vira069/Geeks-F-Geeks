@@ -14,6 +14,7 @@ class Geeks {
             int arr[] = new int[str.length];
             for (int i = 0; i < str.length; i++) arr[i] = Integer.parseInt(str[i]);
             System.out.println(new Solution().majorityElement(arr));
+            System.out.println("~");
         }
     }
 }
@@ -24,38 +25,31 @@ class Geeks {
 
 class Solution {
     static int majorityElement(int arr[]) {
-        // your code here
+        // Optimise approach -> Sorting 
         int n = arr.length;
-        int count = 0;
-        int ele = 0;
-        
-        //Moore Voting Algorithm
-        for(int i=0;i<n;i++){
-            if(count==0){
-                ele = arr[i];
-                count=1;
+        int freq = 0, ans = 0;
+        for(int i=0 ;i<n;i++){
+            if(freq == 0){
+             ans = arr[i];
             }
-            else if(ele == arr[i]) {
-                count++;
+            if(ans == arr[i]){
+                freq++;
             }
             else{
-                count--; //if other element then decrease count by one
+                freq--;
             }
         }
-        
-        // Check for majority element is correct or not
-        int count1 = 0;
-        for(int i=0;i<n;i++){
-            if(arr[i] == ele){
-                count1++;
+         freq = 0;
+        for (int num : arr) {
+            if (num == ans) {
+                freq++;
             }
         }
-        
-        if(count1 > (n/2)){
-            return ele;
+
+        if (freq > n / 2) {
+            return ans;
+        } else {
+            return -1;
         }
-        
-        // If No Majority element present
-        return -1;
     }
 }
