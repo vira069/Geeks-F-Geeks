@@ -25,7 +25,7 @@ class Geeks {
 
 class Solution {
     static int majorityElement(int arr[]) {
-        // Optimise approach -> Sorting 
+        // Optimise approach -> Sorting -> Moore Voting Algorithm
         int n = arr.length;
         int freq = 0, ans = 0;
         for(int i=0 ;i<n;i++){
